@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>
+      Frontend Mentor | Newsletter sign-up form with success message
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+        font-family: "Montserrat", sans-serif;
+      }
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+        background-color: #37384e;
+        color: #fff;
+      }
+      .attribution a {
+        color: #fff;
+      }
+      .container {
+        background-color: #37384e;
+        min-height: calc(100vh - 13.333px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .signup_form_container {
+        background-color: #fff;
+        display: flex;
+        padding: 20px;
+        border-radius: 20px;
+        width: 900px;
+      }
+
+      .signup_form_container .left_side_signup_form {
+        width: 50%;
+        padding-inline: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .signup_form_container .right_side_sign_up_form {
+        width: 50%;
+      }
+
+      .left_side_signup_form .signup_title {
+        font-size: 45px;
+        font-weight: bold;
+        color: #28262e;
+        margin-bottom: 20px;
+      }
+
+      .left_side_signup_form .signup_form_description {
+        font-size: 16px;
+        margin-bottom: 20px;
+        font-weight: 500;
+        color: #28262e;
+      }
+
+      .left_side_signup_form .form_ul_list {
+        list-style: none;
+        margin-bottom: 40px;
+      }
+
+      .form_ul_list .form_list_item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        font-weight: 500;
+      }
+
+      .form_list_item .list_check_icon {
+        margin-right: 10px;
+      }
+
+      .left_side_signup_form .signup_form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .signup_form .labels_container {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .labels_container .error_label {
+        color: #fd9691;
+        font-weight: bold;
+        font-size: 13px;
+      }
+
+      .hide {
+        display: none !important;
+      }
+
+      .signup_form .label_email {
+        font-weight: bold;
+        font-size: 13px;
+      }
+
+      .signup_form .form_email_input {
+        height: 60px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1.5px solid rgba(0, 0, 0, 0.3);
+        padding-left: 20px;
+        font-weight: 500;
+      }
+
+      .signup_form .form_email_input.input_error {
+        border-color: #fd9691;
+        color: #fd9691;
+        background-color: #ffe8e6;
+      }
+
+      .signup_form .form_subscribe_button {
+        height: 60px;
+        background-color: #232742;
+        border: none;
+        color: #fff;
+        font-weight: bold;
+        border-radius: 15px;
+        cursor: pointer;
+      }
+
+      .signup_form .form_subscribe_button:hover {
+        background: rgb(229, 76, 107);
+        background: linear-gradient(
+          90deg,
+          rgba(229, 76, 107, 1) 0%,
+          rgba(255, 105, 60, 1) 100%
+        );
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      }
+
+      .right_side_sign_up_form .illustration_desktop {
+        width: 100%;
+      }
+
+      .right_side_sign_up_form .illustration_mobile {
+        display: none;
+      }
+
+      .sucess_container {
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        width: 450px;
+        padding: 50px;
+        border-radius: 30px;
+      }
+
+      .sucess_container .thank_you_icon {
+        width: 50px;
+      }
+      .sucess_container .thanks_title {
+        font-size: 45px;
+        font-weight: bold;
+        color: #28262e;
+        margin-block: 20px;
+      }
+
+      .sucess_container .confirmation_message {
+        font-size: 16px;
+        margin-bottom: 30px;
+        font-weight: 500;
+        color: #28262e;
+      }
+
+      .confirmation_message span {
+        font-weight: bold;
+      }
+
+      .sucess_container .dismiss_button {
+        height: 60px;
+        background-color: #232742;
+        border: none;
+        color: #fff;
+        font-weight: bold;
+        border-radius: 15px;
+        cursor: pointer;
+      }
+
+      .sucess_container .dismiss_button:hover {
+        background: rgb(229, 76, 107);
+        background: linear-gradient(
+          90deg,
+          rgba(229, 76, 107, 1) 0%,
+          rgba(255, 105, 60, 1) 100%
+        );
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          display: flex;
+          background-color: #fff;
+          padding-bottom: 20px;
+        }
+        .attribution {
+          color: #000;
+          background-color: #fff;
+        }
+        .attribution a {
+          color: #000;
+        }
+        .signup_form_container {
+          height: 100%;
+          flex-direction: column-reverse;
+          width: 100%;
+          padding: 0px;
+        }
+
+        .signup_form_container .left_side_signup_form {
+          width: 100%;
+        }
+
+        .left_side_signup_form .signup_title {
+          margin-top: 30px;
+        }
+
+        .left_side_signup_form .form_ul_list {
+          margin-bottom: 25px;
+        }
+
+        .form_ul_list .form_list_item {
+          margin-bottom: 25px;
+        }
+
+        .signup_form_container .right_side_sign_up_form {
+          width: 100%;
+        }
+
+        .right_side_sign_up_form .illustration_desktop {
+          display: none;
+        }
+
+        .right_side_sign_up_form .illustration_mobile {
+          display: inline;
+          width: 100%;
+        }
+
+        .sucess_container {
+          width: 100%;
+          min-height: 100vh;
+          padding-top: 200px;
+        }
+        .sucess_container .dismiss_button {
+          margin-top: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" role="main">
+      <div class="signup_form_container">
+        <div class="left_side_signup_form">
+          <h1 class="signup_title">Stay updated!</h1>
+          <p class="signup_form_description">
+            Join 60,000+ product managers receivers receiving monthy updates on:
+          </p>
+
+          <ul class="form_ul_list">
+            <li class="form_list_item">
+              <img
+                class="list_check_icon"
+                src="./assets/images/icon-list.svg"
+                alt="check sign"
+              />
+              Product discovery and building what matters
+            </li>
+            <li class="form_list_item">
+              <img
+                class="list_check_icon"
+                src="./assets/images/icon-list.svg"
+                alt="check sign"
+              />
+              Measuring to ensure updates are success
+            </li>
+            <li class="form_list_item">
+              <img
+                class="list_check_icon"
+                src="./assets/images/icon-list.svg"
+                alt="check sign"
+              />And much more!
+            </li>
+          </ul>
+
+          <form id="signup_form" class="signup_form">
+            <div class="labels_container">
+              <label for="email" class="label_email">Email address</label>
+              <label for="email" id="error_label" class="error_label hide"
+                >Valid email required</label
+              >
+            </div>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              class="form_email_input"
+              placeholder="email@company.com"
+            />
+            <button type="submit" class="form_subscribe_button">
+              Subscribe to monthly newsletter
+            </button>
+          </form>
+        </div>
+        <div class="right_side_sign_up_form">
+          <img
+            class="illustration_desktop"
+            alt="Illustration sign up for desktop"
+            src="./assets/images/illustration-sign-up-desktop.svg"
+          />
+          <img
+            class="illustration_mobile"
+            alt="Illustration sign up for desktop"
+            src="./assets/images/illustration-sign-up-mobile.svg"
+          />
+        </div>
+      </div>
+
+      <div class="sucess_container hide">
+        <img
+          class="thank_you_icon"
+          src="./assets/images/icon-list.svg"
+          alt="thank you for subscribing check icon"
+        />
+
+        <h1 class="thanks_title">Thanks for subscribing!</h1>
+
+        <p class="confirmation_message">
+          A confirmation email has ben sent to
+          <span id="user_email">123123</span>. Please open it and click the
+          button inside to confirm your subscription.
+        </p>
+        <button class="dismiss_button" id="dismis_button">
+          Dismiss Message
+        </button>
+      </div>
+    </div>
+    <!-- 
+ Sign-up form start 
+
+  Stay updated!
+
+  Join 60,000+ product managers receiving monthly updates on:
+
+  Product discovery and building what matters
+  Measuring to ensure updates are a success
+  And much more!
+
+  Email address
+  email@company.com
+
+  Subscribe to monthly newsletter
+
+  Sign-up form end
+
+  Success message start
+
+  Thanks for subscribing!
+
+  A confirmation email has been sent to ash@loremcompany.com. 
+  Please open it and click the button inside to confirm your subscription.
+
+  Dismiss message
+
+  Success message end -->
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by
+      <a href="https://linkedin.com/in/petritnuredini/" target="_blank"
+        >Petrit Nuredini</a
+      >.
+    </div>
+
+    <script>
+      const signupFormContainer = document.querySelector(
+        ".signup_form_container"
+      );
+      const sucessMessageContainer =
+        document.querySelector(".sucess_container");
+      const form = document.getElementById("signup_form");
+      const errorLabel = document.getElementById("error_label");
+      const emailInput = document.getElementById("email");
+      const emailSentTo = document.getElementById("user_email");
+      const dismissButton = document.getElementById("dismis_button");
+
+      function validateEmail() {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(emailInput.value);
+      }
+
+      const handleSignUpForm = (e) => {
+        e.preventDefault();
+        sucessMessageContainer.classList.add("hide");
+        signupFormContainer.classList.remove("hide");
+        emailInput.classList.remove("input_error");
+        errorLabel.classList.add("hide");
+
+        if (validateEmail()) {
+          signupFormContainer.classList.add("hide");
+          sucessMessageContainer.classList.remove("hide");
+          emailSentTo.innerText = emailInput.value;
+        } else {
+          emailInput.classList.add("input_error");
+          errorLabel.classList.remove("hide");
+        }
+      };
+
+      const handleDismissMessage = () => {
+        emailInput.value = "";
+        sucessMessageContainer.classList.add("hide");
+        signupFormContainer.classList.remove("hide");
+      };
+
+      dismissButton.addEventListener("click", handleDismissMessage);
+      form.addEventListener("submit", handleSignUpForm);
+    </script>
+  </body>
+</html>
