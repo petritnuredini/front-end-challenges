@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Results summary component</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Hanken Grotesk", sans-serif;
+      }
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+      .results_summary_container {
+        min-height: calc(100vh - 15px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+      }
+
+      .results_card {
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        border-radius: 25px;
+        display: flex;
+        overflow: hidden;
+        width: 600px;
+      }
+      .results_card_left_side {
+        width: 50%;
+        background: rgb(120, 87, 255);
+        background: linear-gradient(
+          180deg,
+          rgba(120, 87, 255, 1) 0%,
+          rgba(46, 43, 233, 1) 100%
+        );
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 25px;
+      }
+
+      .left_side_title {
+        font-size: 20px;
+        color: #fff;
+        text-align: center;
+        opacity: 0.5;
+      }
+
+      .results_circle {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: rgb(78, 33, 202);
+        background: linear-gradient(
+          180deg,
+          rgba(78, 33, 202, 1) 0%,
+          rgba(36, 33, 202, 1) 100%
+        );
+        color: #fff;
+        margin-block: 30px;
+      }
+      .results_circle .score {
+        font-size: 50px;
+        font-weight: 700;
+      }
+      .results_circle .total_score {
+        font-size: 13px;
+        opacity: 0.5;
+      }
+      .status {
+        color: #fff;
+        margin-bottom: 15px;
+      }
+
+      .description {
+        color: #fff;
+        text-align: center;
+        opacity: 0.5;
+      }
+
+      .result_card_right_side {
+        padding: 30px;
+        width: 50%;
+      }
+
+      .right_side_title {
+        font-size: 20px;
+        color: #303b59;
+      }
+
+      .categories_container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-block: 30px;
+      }
+
+      .category {
+        width: 100%;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+      }
+
+      .category .category_left_side {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+      }
+
+      .category_left_side img {
+        margin-right: 10px;
+      }
+
+      .category.reaction {
+        background-color: #fff6f5;
+      }
+
+      .reaction .category_left_side {
+        color: #e1696b;
+      }
+
+      .memory .category_left_side {
+        color: #ffba3e;
+      }
+
+      .category.memory {
+        background-color: #fffbf2;
+      }
+
+      .verbal .category_left_side {
+        color: #32b492;
+      }
+
+      .category.verbal {
+        background-color: #f2fbfa;
+      }
+
+      .visual .category_left_side {
+        color: #28368e;
+      }
+
+      .category.visual {
+        background-color: #f3f3fd;
+      }
+
+      .category_right_side .score {
+        font-weight: bold;
+        opacity: 1;
+      }
+
+      .total_score {
+        opacity: 0.5;
+        font-weight: bold;
+      }
+
+      .continue_button {
+        all: unset;
+        background-color: #303b59;
+        width: 100%;
+        height: 50px;
+        border-radius: 26px;
+        text-align: center;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .continue_button:hover {
+        background: rgb(120, 87, 255);
+        background: linear-gradient(
+          180deg,
+          rgba(120, 87, 255, 1) 0%,
+          rgba(46, 43, 233, 1) 100%
+        );
+      }
+
+      @media (max-width: 768px) {
+        .results_summary_container {
+          align-items: flex-start;
+        }
+        .results_card {
+          flex-direction: column;
+          border-top-left-radius: 0px;
+          border-top-right-radius: 0px;
+        }
+        .results_card_left_side {
+          width: 100%;
+          border-top-left-radius: 0px;
+          border-top-right-radius: 0px;
+        }
+
+        .result_card_right_side {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="results_summary_container" role="main">
+      <div class="results_card">
+        <div class="results_card_left_side">
+          <h1 class="left_side_title">Your Result</h1>
+
+          <div class="results_circle">
+            <h1 class="score">76</h1>
+            <h1 class="total_score">of 100</h1>
+          </div>
+
+          <h1 class="status">Great</h1>
+
+          <p class="description">
+            You scored higher than 65% of the people who have taken these tests.
+          </p>
+        </div>
+
+        <div class="result_card_right_side">
+          <h1 class="right_side_title">Summary</h1>
+
+          <div class="categories_container">
+            <div class="category reaction">
+              <div class="category_left_side">
+                <img src="./assets/images/icon-reaction.svg" alt="flash icon" />
+                Reaction
+              </div>
+
+              <div class="category_right_side">
+                <span class="score">80</span>
+                <span class="total_score">/ 100</span>
+              </div>
+            </div>
+
+            <div class="category memory">
+              <div class="category_left_side">
+                <img src="./assets/images/icon-memory.svg" alt="brain icon" />
+                Memory
+              </div>
+
+              <div class="category_right_side">
+                <span class="score">92</span>
+                <span class="total_score">/ 100</span>
+              </div>
+            </div>
+
+            <div class="category verbal">
+              <div class="category_left_side">
+                <img
+                  src="./assets/images/icon-verbal.svg"
+                  alt="messenger icon"
+                />Verbal
+              </div>
+
+              <div class="category_right_side">
+                <span class="score">61</span> /
+                <span class="total_score">100</span>
+              </div>
+            </div>
+
+            <div class="category visual">
+              <div class="category_left_side">
+                <img src="./assets/images/icon-visual.svg" alt="eye icon" />
+                Visual
+              </div>
+
+              <div class="category_right_side">
+                <span class="score">72</span> /
+                <span class="total_score">100</span>
+              </div>
+            </div>
+          </div>
+
+          <button class="continue_button" type="button">Continue</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="attribution" role="contentinfo">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by
+      <a href="https://linkedin.com/in/petritnuredini/">Petrit Nuredini</a>.
+    </div>
+  </body>
+</html>
