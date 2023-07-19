@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Age calculator app</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+      .age_calculator_app_container {
+        min-height: calc(100vh - 16.7px);
+        background-color: hsl(0, 0%, 94%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .age_app_card {
+        width: 1200px;
+        background-color: #fff;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 200px;
+        display: flex;
+        flex-direction: column;
+        padding: 50px;
+      }
+
+      .inputs_container {
+        display: flex;
+        gap: 30px;
+      }
+      .single_input {
+        display: flex;
+        flex-direction: column;
+      }
+      .single_input label {
+        text-transform: uppercase;
+        color: hsl(0, 1%, 44%);
+        letter-spacing: 4px;
+        margin-bottom: 5px;
+        font-size: 14px;
+      }
+      /* Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+
+      .single_input input {
+        all: unset;
+        border: 2px solid hsl(0, 0%, 86%);
+        height: 50px;
+        border-radius: 5px;
+        padding-left: 20px;
+        font-size: 32px;
+        width: 150px;
+      }
+
+      .line_separator {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .line_separator .separator {
+        height: 0px;
+        width: 100%;
+        border: 1px solid hsl(0, 0%, 86%);
+      }
+
+      .calculate_button {
+        all: unset;
+        cursor: pointer;
+        background-color: hsl(259, 100%, 65%);
+        width: 90px;
+        border-radius: 50%;
+      }
+
+      .line_separator .arrow_bottom {
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+      }
+
+      .error_message {
+        font-weight: 400;
+        font-style: italic;
+        color: #ffaeab;
+        font-size: 15px;
+        margin-top: 5px;
+      }
+
+      .red_color {
+        color: #ffaeab !important;
+      }
+
+      .red_border_color {
+        border-color: #ffaeab !important;
+      }
+
+      .age {
+        font-size: 80px;
+        font-style: italic;
+      }
+
+      .result {
+        color: hsl(259, 100%, 65%);
+      }
+
+      @media (max-width: 768px) {
+        .age_app_card {
+          max-width: 500px;
+          padding: 20px;
+        }
+
+        .inputs_container {
+          gap: 15px;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+        .single_input label {
+          font-size: 12px;
+        }
+
+        .single_input input {
+          max-width: 70px;
+          padding-inline: 5px;
+          font-size: 25px;
+        }
+
+        .error_message {
+          font-size: 10px;
+        }
+
+        .line_separator {
+          position: relative;
+          padding-block: 70px;
+        }
+
+        .calculate_button {
+          position: absolute;
+          width: 80px;
+          height: 80px;
+        }
+
+        .age {
+          font-size: 50px;
+        }
+      }
+
+      @media (max-width: 360px) {
+        .age {
+          font-size: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="age_calculator_app_container" role="main">
+      <div class="age_app_card">
+        <div class="inputs_container">
+          <div class="single_input">
+            <label id="day_label" for="day_input">day</label>
+            <input
+              type="number"
+              name="day_input"
+              id="day_input"
+              placeholder="DD"
+            />
+            <p id="day_error" class="error_message"></p>
+          </div>
+
+          <div class="single_input">
+            <label id="month_label" for="month_input">month</label>
+            <input
+              type="number"
+              name="month_input"
+              id="month_input"
+              placeholder="MM"
+            />
+            <p id="month_error" class="error_message"></p>
+          </div>
+
+          <div class="single_input">
+            <label id="year_label" for="year_input">year</label>
+            <input
+              type="number"
+              name="year_input"
+              id="year_input"
+              placeholder="YYYY"
+            />
+            <p id="year_error" class="error_message"></p>
+          </div>
+        </div>
+        <div class="line_separator">
+          <span class="separator"></span>
+          <button class="calculate_button" id="calculate_button">
+            <img
+              class="arrow_bottom"
+              src="./assets/images/icon-arrow.svg"
+              alt="arrow bottom icon"
+            />
+          </button>
+        </div>
+
+        <div class="age_result">
+          <h1 class="age years">
+            <span id="years" class="result">--</span> years
+          </h1>
+          <h1 class="age months">
+            <span id="months" class="result">--</span> months
+          </h1>
+          <h1 class="age days">
+            <span id="days" class="result">--</span> days
+          </h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="attribution" role="contentinfo">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by
+      <a href="https://linkedin.com/in/petritnuredini/" target="_blank"
+        >Petrit Nuredini</a
+      >.
+    </div>
+
+    <script>
+      // Labels
+      const dayLabel = document.getElementById("day_label");
+      const monthLabel = document.getElementById("month_label");
+      const yearLabel = document.getElementById("year_label");
+
+      // Inputs
+      const dayInput = document.getElementById("day_input");
+      const monthInput = document.getElementById("month_input");
+      const yearInput = document.getElementById("year_input");
+
+      // Errors
+      const dayError = document.getElementById("day_error");
+      const monthError = document.getElementById("month_error");
+      const yearError = document.getElementById("year_error");
+
+      // Results
+      const yearsResult = document.getElementById("years");
+      const monthsResult = document.getElementById("months");
+      const daysResult = document.getElementById("days");
+
+      const calculateButton = document.getElementById("calculate_button");
+
+      var today = new Date();
+      var currentDay = parseInt(String(today.getDate()).padStart(2, "0"));
+      var currentMonth = parseInt(
+        String(today.getMonth() + 1).padStart(2, "0")
+      );
+      var currentYear = today.getFullYear();
+
+      let validateDayState;
+      let validateMonthState;
+      let validateYearState;
+
+      function isInputEmpty(inputValue) {
+        return inputValue.trim() === "";
+      }
+
+      function validateDayInput() {
+        if (isInputEmpty(dayInput.value)) {
+          dayLabel.classList.add("red_color");
+          dayInput.classList.add("red_border_color");
+          dayError.innerText = "This field is required";
+          validateDayState = false;
+        } else if (parseInt(dayInput.value) > 31) {
+          dayLabel.classList.add("red_color");
+          dayInput.classList.add("red_border_color");
+          dayError.innerText = "Must be a valid day";
+          validateDayState = false;
+        } else {
+          dayLabel.classList.remove("red_color");
+          dayInput.classList.remove("red_border_color");
+          dayError.innerText = "";
+          validateDayState = true;
+        }
+      }
+
+      function validateMonthInput() {
+        if (monthInput.value.length === 0) {
+          monthLabel.classList.add("red_color");
+          monthInput.classList.add("red_border_color");
+          monthError.innerText = "This field is required";
+          validateMonthState = false;
+        } else if (parseInt(monthInput.value) > 12) {
+          monthLabel.classList.add("red_color");
+          monthInput.classList.add("red_border_color");
+          monthError.innerText = "Must be a valid month";
+          validateMonthState = false;
+        } else {
+          monthLabel.classList.remove("red_color");
+          monthInput.classList.remove("red_border_color");
+          monthError.innerText = "";
+          validateMonthState = true;
+        }
+      }
+
+      function validateYearInput() {
+        if (yearInput.value.length === 0) {
+          yearLabel.classList.add("red_color");
+          yearInput.classList.add("red_border_color");
+          yearError.innerText = "This field is required";
+          validateYearState = false;
+        } else if (
+          (parseInt(dayInput.value) >= currentDay &&
+            parseInt(monthInput.value) >= currentMonth &&
+            parseInt(yearInput.value) >= currentYear) ||
+          parseInt(yearInput.value) > currentYear
+        ) {
+          yearLabel.classList.add("red_color");
+          yearInput.classList.add("red_border_color");
+          yearError.innerText = "Must be on the past";
+          validateYearState = false;
+        } else {
+          yearLabel.classList.remove("red_color");
+          yearInput.classList.remove("red_border_color");
+          yearError.innerText = "";
+          validateYearState = true;
+        }
+      }
+
+      function handleCalculate() {
+        validateDayInput();
+        validateMonthInput();
+        validateYearInput();
+
+        if (validateDayState && validateMonthState && validateYearState) {
+          const birthDate = new Date(
+            parseInt(yearInput.value),
+            parseInt(monthInput.value) - 1,
+            parseInt(dayInput.value)
+          );
+          const ageInMilliseconds = today - birthDate;
+          const ageDate = new Date(ageInMilliseconds);
+
+          // Calculate the years
+          let ageYears = ageDate.getUTCFullYear() - 1970;
+
+          // Calculate the months (and remaining days)
+          const birthDatePlusAge = new Date(birthDate);
+          birthDatePlusAge.setFullYear(
+            birthDatePlusAge.getFullYear() + ageYears
+          );
+          let ageMonths = 0;
+
+          while (birthDatePlusAge <= today) {
+            birthDatePlusAge.setMonth(birthDatePlusAge.getMonth() + 1);
+            ageMonths++;
+          }
+
+          birthDatePlusAge.setMonth(birthDatePlusAge.getMonth() - 1);
+          ageMonths--;
+
+          // Calculate the days
+          let ageDays = Math.floor(
+            (today - birthDatePlusAge) / (1000 * 60 * 60 * 24)
+          );
+
+          daysResult.innerText = ageDays;
+          monthsResult.innerText = ageMonths;
+          yearsResult.innerText = ageYears;
+        } else {
+          daysResult.innerText = "--";
+          monthsResult.innerText = "--";
+          yearsResult.innerText = "--";
+        }
+      }
+
+      calculateButton.addEventListener("click", handleCalculate);
+    </script>
+  </body>
+</html>
