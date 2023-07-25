@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Article preview component</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      * {
+        font-family: "Manrope", sans-serif;
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+      }
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+      .article_container {
+        min-height: calc(100vh - 15.33px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: hsl(210, 46%, 95%);
+        padding: 20px;
+      }
+
+      .article_card {
+        display: flex;
+        max-width: 800px;
+        background-color: #fff;
+        border-radius: 20px;
+      }
+      .article_card_left {
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+      }
+      .article_card_left .drawer {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+      }
+
+      .article_card_right {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        padding: 40px;
+      }
+
+      .article_card_right .article_title {
+        font-size: 22px;
+        color: hsl(217, 19%, 35%);
+      }
+
+      .article_card_right .article_description {
+        font-size: 13px;
+        color: hsl(214, 17%, 51%);
+        margin-block: 15px;
+      }
+
+      .article_card_right .author_and_share {
+        display: flex;
+        align-items: center;
+      }
+
+      .author_and_share .author_image {
+        width: 50px;
+        border-radius: 50%;
+        margin-right: 15px;
+      }
+
+      .author_name {
+        font-size: 15px;
+        color: hsl(217, 19%, 35%);
+        font-weight: bold;
+      }
+      .article_date_created {
+        font-size: 12px;
+        color: hsl(214, 17%, 51%);
+      }
+
+      .share_icon {
+        all: unset;
+        margin-left: auto;
+        background-color: hsl(210, 46%, 95%);
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .share_icon .share_tooltip {
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        background-color: hsl(217, 19%, 35%);
+        z-index: 2;
+        top: -60px;
+        padding: 10px 20px;
+        gap: 10px;
+        border-radius: 10px;
+        display: none;
+      }
+      .share_icon:hover {
+        background-color: hsl(217, 19%, 35%);
+      }
+      .share_icon:hover .share_icon_img {
+        filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg)
+          brightness(100%) contrast(100%);
+      }
+      .share_icon:hover .share_tooltip {
+        display: flex;
+      }
+      .share_tooltip .share {
+        color: hsl(212, 23%, 69%);
+        letter-spacing: 5px;
+        font-size: 12px;
+      }
+
+      .share_tooltip::after {
+        content: "";
+        position: absolute;
+        border-width: 10px;
+        height: 20px;
+        border-style: solid;
+        bottom: -40px;
+        border-color: hsl(217, 19%, 35%) transparent transparent transparent;
+      }
+
+      .share_tooltip_mobile {
+        display: none;
+      }
+
+      @media (max-width: 576px) {
+        .article_card {
+          flex-direction: column;
+          max-width: 400px;
+        }
+        .article_card_left {
+          width: 100%;
+          border-bottom-left-radius: 0px;
+          border-top-right-radius: 20px;
+        }
+        .article_card_right {
+          width: 100%;
+          padding: 0px;
+          padding-top: 20px;
+        }
+        .article_title,
+        .article_description {
+          padding-inline: 20px;
+        }
+        .article_card_right .author_and_share {
+          display: flex;
+          padding-inline: 20px;
+          padding-bottom: 20px;
+        }
+
+        .share_icon:hover .share_tooltip {
+          display: none !important;
+        }
+
+        .share_tooltip_mobile {
+          display: flex;
+          /* justify-content: space-between; */
+          align-items: center;
+          background-color: hsl(217, 19%, 35%);
+          padding: 20px;
+          border-bottom-left-radius: 20px;
+          border-bottom-right-radius: 20px;
+        }
+        .share_tooltip_mobile .share {
+          color: hsl(212, 23%, 69%);
+          letter-spacing: 5px;
+          font-size: 12px;
+          margin-right: 15px;
+        }
+        .share_tooltip_mobile .social_media_share {
+          margin-right: 15px;
+        }
+
+        .share_tooltip_mobile .share_icon {
+          width: 20px;
+          height: 20px;
+          margin-left: auto;
+          background-color: hsl(214, 17%, 51%);
+          padding: 5px;
+        }
+        .share_tooltip_mobile .share_icon_img {
+          filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg)
+            brightness(100%) contrast(100%);
+        }
+      }
+
+      .hide_content {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="article_container" role="main">
+      <div class="article_card">
+        <div class="article_card_left">
+          <img class="drawer" src="./images/drawers.jpg" alt="Drawer" />
+        </div>
+
+        <div class="article_card_right">
+          <h1 class="article_title">
+            Shift the overall look and feel by adding these wonderful touches to
+            furniture in your home
+          </h1>
+          <p class="article_description">
+            Ever been in a room and felt like something was missing? Perhaps it
+            felt slightly bare and uninviting. I’ve got some simple tips to help
+            you make any room feel complete.
+          </p>
+
+          <div class="author_and_share" id="author_and_share">
+            <div class="author_container">
+              <img
+                class="author_image"
+                src="./images/avatar-michelle.jpg"
+                alt="Avatar Michelle"
+              />
+            </div>
+            <div class="author_name_container">
+              <p class="author_name">Michelle Appleton</p>
+              <p class="article_date_created">28 Jun 2020</p>
+            </div>
+            <button class="share_icon" id="share_button">
+              <div class="share_tooltip">
+                <p class="share">SHARE</p>
+                <a
+                  href="https://www.facebook.com/sharer/sharer.php?u=www.petritnuredini.com"
+                  target="_blank"
+                >
+                  <img
+                    src="./images/icon-facebook.svg"
+                    alt="Facebook Icon"
+                    class="social_media_share facebook"
+                    id="facebook"
+                  />
+                </a>
+                <a
+                  href="http://twitter.com/share?text=Visit My Portfolio&url=http://www.petritnuredini.com&hashtags=personalPortfolio,softwareEngineer,frontEnd
+                "
+                  target="_blank"
+                >
+                  <img
+                    src="./images/icon-twitter.svg"
+                    alt="Twitter Icon"
+                    class="social_media_share twitter"
+                    id="twitter"
+                  />
+                </a>
+                <a
+                  href="http://pinterest.com/pin/create/link/?url=https://www.petritnuredini.com"
+                  target="_blank"
+                >
+                  <img
+                    src="./images/icon-pinterest.svg"
+                    alt="Pinterest Icon"
+                    class="social_media_share pinterest"
+                    id="pinterest"
+                  />
+                </a>
+              </div>
+              <img
+                class="share_icon_img"
+                src="./images/icon-share.svg"
+                alt="Share Icon"
+              />
+            </button>
+          </div>
+          <div
+            class="share_tooltip_mobile hide_content"
+            id="share_tooltip_mobile"
+          >
+            <p class="share">SHARE</p>
+            <a
+              href="https://www.facebook.com/sharer/sharer.php?u=www.petritnuredini.com"
+              target="_blank"
+            >
+              <img
+                src="./images/icon-facebook.svg"
+                alt="Facebook Icon"
+                class="social_media_share facebook"
+                id="facebook"
+              />
+            </a>
+            <a
+              href="http://twitter.com/share?text=Visit My Portfolio&url=http://www.petritnuredini.com&hashtags=personalPortfolio,softwareEngineer,frontEnd
+            "
+              target="_blank"
+            >
+              <img
+                src="./images/icon-twitter.svg"
+                alt="Twitter Icon"
+                class="social_media_share twitter"
+                id="twitter"
+              />
+            </a>
+            <a
+              href="http://pinterest.com/pin/create/link/?url=https://www.petritnuredini.com"
+              target="_blank"
+            >
+              <img
+                src="./images/icon-pinterest.svg"
+                alt="Pinterest Icon"
+                class="social_media_share pinterest"
+                id="pinterest"
+              />
+            </a>
+            <button class="share_icon" id="share_button_mobile">
+              <img
+                class="share_icon_img"
+                src="./images/icon-share.svg"
+                alt="Share Icon"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--   Michelle Appleton 28 Jun 2020
+    Share -->
+
+    <div class="attribution" role="contentinfo">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="www.petritnuredini.com">Petrit Nuredini</a>.
+    </div>
+
+    <script>
+      const shareButton = document.getElementById("share_button");
+      const shareButtonMobile = document.getElementById("share_button_mobile");
+      const authorContent = document.getElementById("author_and_share");
+      const shareMobile = document.getElementById("share_tooltip_mobile");
+
+      shareButton.addEventListener("click", () => {
+        if (window.innerWidth < 576) {
+          authorContent.classList.add("hide_content");
+          shareMobile.classList.remove("hide_content");
+        }
+      });
+
+      shareButtonMobile.addEventListener("click", () => {
+        if (window.innerWidth < 576) {
+          authorContent.classList.remove("hide_content");
+          shareMobile.classList.add("hide_content");
+        }
+      });
+    </script>
+  </body>
+</html>
