@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Base Apparel coming soon page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      * {
+        font-family: "Josefin Sans", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+      .apparel_comming_soon_container {
+        display: flex;
+        min-height: 100vh;
+        overflow: hidden;
+      }
+      .apparel_left_side {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        padding: 50px 110px;
+      }
+      .left_side_header {
+        width: 100%;
+      }
+
+      .left_side_body {
+        height: 100%;
+        width: 450px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      .title_part_one {
+        font-size: 80px;
+        font-weight: lighter;
+        letter-spacing: 20px;
+        color: hsl(0, 36%, 70%);
+      }
+
+      .title_part_two {
+        font-size: 80px;
+        letter-spacing: 20px;
+        color: #473e3f;
+      }
+
+      .body_parahraph {
+        color: hsl(0, 36%, 70%);
+        font-size: 16px;
+        letter-spacing: 1px;
+        line-height: 25px;
+        margin-block: 30px;
+      }
+
+      .apparel_right_side .apparel_image_desktop {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .input_container {
+        display: flex;
+        width: 100%;
+        border: 1.5px solid rgb(179, 179, 179);
+        height: 50px;
+        border-radius: 25px;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+      }
+      .input_container .email_input {
+        all: unset;
+        width: 100%;
+        padding-left: 25px;
+        height: 100%;
+        margin-right: -20px;
+        border-top-left-radius: 25px;
+        border-bottom-left-radius: 25px;
+      }
+
+      .input_container .submit_btn {
+        all: unset;
+        width: 120px;
+        height: 50px;
+        border-radius: 25px;
+        background: rgb(248, 191, 191);
+        background: linear-gradient(
+          135deg,
+          rgba(248, 191, 191, 1) 0%,
+          rgba(238, 140, 140, 1) 100%
+        );
+        margin-right: -2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      .input_container .submit_btn:hover {
+        background: hsl(0, 80%, 86%);
+        box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+      }
+
+      .error_text {
+        padding-left: 25px;
+        margin-top: 10px;
+        color: hsl(0, 36%, 70%);
+      }
+      .success_text {
+        padding-left: 25px;
+        margin-top: 10px;
+        color: hsl(147, 91%, 32%);
+      }
+
+      .error_icon {
+        margin-right: 10px;
+        position: absolute;
+        right: 90px;
+      }
+
+      .red_border {
+        border: 2px solid hsl(0, 36%, 70%);
+      }
+
+      .hide_element {
+        display: none !important;
+      }
+      .apparel_right_side {
+        width: 40%;
+        overflow: hidden;
+      }
+      .left_side_header_mobile {
+        display: none;
+      }
+
+      @media (max-width: 992px) {
+        .apparel_comming_soon_container {
+          flex-direction: column-reverse;
+          min-height: auto;
+        }
+        .left_side_header_mobile {
+          display: flex;
+          width: 100%;
+          padding: 20px;
+        }
+        .left_side_header {
+          display: none;
+        }
+        .apparel_right_side {
+          width: 100%;
+          height: 300px;
+        }
+        .apparel_right_side .apparel_image_desktop {
+          object-position: top;
+          object-fit: cover;
+        }
+        .apparel_left_side {
+          width: 100%;
+          padding: 10px;
+          align-items: center;
+          justify-content: center;
+        }
+        .left_side_body {
+          width: 100%;
+          align-items: center;
+        }
+        .title_part_one {
+          font-size: 40px;
+          text-align: center;
+        }
+        .title_part_two {
+          font-size: 40px;
+          text-align: center;
+        }
+        .body_parahraph {
+          text-align: center;
+          width: 100%;
+          max-width: 400px;
+        }
+
+        .input_container {
+          width: 100%;
+          max-width: 350px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .title_part_one,
+        .title_part_two {
+          font-size: 25px;
+        }
+        .body_parahraph {
+          font-size: 12px;
+        }
+        .input_container {
+          height: 35px;
+        }
+        .input_container .submit_btn {
+          height: 35px;
+          border-radius: calc(35px / 2);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="apparel_comming_soon_container">
+      <div class="apparel_left_side">
+        <div class="left_side_header">
+          <img
+            class="apparel_logo"
+            src="./images/logo.svg"
+            alt="Apparel Logo"
+          />
+        </div>
+
+        <div class="left_side_body">
+          <h1 class="title_part_one">WE'RE</h1>
+          <h1 class="title_part_two">COMING</h1>
+          <h1 class="title_part_two">SOON</h1>
+
+          <p class="body_parahraph">
+            Hello fellow shoppers! We're currently building our new fashion
+            store. Add your email below to stay up-to-date with announcements
+            and our launch deals.
+          </p>
+
+          <div class="input_container">
+            <input
+              class="email_input"
+              id="email"
+              type="email"
+              placeholder="Email Address"
+            />
+            <img
+              class="error_icon hide_element"
+              src="./images/icon-error.svg"
+              alt="Error icon"
+            />
+            <button class="submit_btn">
+              <img
+                class="arrow_right_icon"
+                src="./images/icon-arrow.svg"
+                alt="Arrow Right"
+              />
+            </button>
+          </div>
+          <p class="error_text hide_element">Please provide a valid email</p>
+          <p class="success_text hide_element">Thank you for signing up!</p>
+        </div>
+      </div>
+
+      <div class="apparel_right_side">
+        <img
+          class="apparel_image_desktop"
+          alt="apparel promote girl"
+          src="./images/hero-desktop.jpg"
+        />
+      </div>
+      <div class="left_side_header_mobile">
+        <img class="apparel_logo" src="./images/logo.svg" alt="Apparel Logo" />
+      </div>
+    </div>
+
+    <script>
+      const button = document.querySelector(".submit_btn");
+      const emailInput = document.getElementById("email");
+
+      const validateEmail = () => {
+        const regex =
+          /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return regex.test(emailInput.value);
+      };
+
+      const handleButtonClick = () => {
+        if (validateEmail()) {
+          document.querySelector(".error_text").classList.add("hide_element");
+          document
+            .querySelector(".success_text")
+            .classList.remove("hide_element");
+          document
+            .querySelector(".input_container")
+            .classList.remove("red_border");
+
+          document.querySelector(".error_icon").classList.add("hide_element");
+          console.log("Entered email:", emailInput.value);
+          emailInput.value = "";
+        } else {
+          document.querySelector(".success_text").classList.add("hide_element");
+          document
+            .querySelector(".error_text")
+            .classList.remove("hide_element");
+
+          document
+            .querySelector(".input_container")
+            .classList.add("red_border");
+
+          document
+            .querySelector(".error_icon")
+            .classList.remove("hide_element");
+        }
+      };
+
+      button.addEventListener("click", handleButtonClick);
+    </script>
+  </body>
+</html>
