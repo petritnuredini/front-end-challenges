@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Interactive rating component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+        font-family: "Overpass", sans-serif;
+      }
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+        background-color: hsl(216, 12%, 8%);
+        color: #fff;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+      .interactive_rating_container {
+        min-height: calc(100vh - 14px);
+        background-color: hsl(216, 12%, 8%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .rating_card {
+        max-width: 400px;
+        background-color: hsl(213, 19%, 18%);
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        border-radius: 20px;
+      }
+      .star_wrapper {
+        background-color: hsla(216, 12%, 54%, 0.15);
+        display: flex;
+        width: fit-content;
+        padding: 10px;
+        border-radius: 50%;
+      }
+      .card_title {
+        color: #fff;
+        font-weight: normal;
+        margin-top: 20px;
+        margin-bottom: 15px;
+      }
+      .card_desc {
+        color: hsl(216, 12%, 54%);
+        font-size: 15px;
+      }
+
+      .rating_numbers_wrapper {
+        display: flex;
+        justify-content: space-between;
+        margin-block: 20px;
+      }
+
+      .rating_number {
+        background-color: hsla(216, 12%, 54%, 0.15);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: hsl(217, 12%, 63%);
+        cursor: pointer;
+      }
+
+      .rating_number.active {
+        background-color: hsl(217, 12%, 63%);
+        color: #fff;
+      }
+
+      .rating_number:hover {
+        background-color: hsl(25, 97%, 53%);
+        color: #fff;
+      }
+
+      .submit_button {
+        all: unset;
+        cursor: pointer;
+        width: 100%;
+        background-color: hsl(25, 97%, 53%);
+        text-align: center;
+        padding: 10px;
+        border-radius: 30px;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: bold;
+      }
+
+      .submit_button:hover {
+        background-color: #fff;
+        color: hsl(25, 97%, 53%);
+      }
+
+      .hide_element {
+        display: none !important;
+      }
+
+      .thankyou_card {
+        max-width: 400px;
+        background-color: hsl(213, 19%, 18%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px;
+        border-radius: 20px;
+      }
+
+      .thankyou_card .thank_you_img {
+        width: 150px;
+      }
+
+      .rating_selected {
+        background-color: hsla(216, 12%, 54%, 0.15);
+        color: hsl(25, 97%, 53%);
+        padding: 5px 20px;
+        border-radius: 40px;
+        margin-block: 30px;
+      }
+
+      .thank_you_title {
+        color: #fff;
+        text-align: center;
+        font-size: 25px;
+      }
+      .thank_you_desc {
+        color: hsl(217, 12%, 63%);
+        text-align: center;
+        font-size: 15px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="interactive_rating_container">
+      <div class="rating_card">
+        <div class="star_wrapper">
+          <img class="star_svg" src="./images/icon-star.svg" alt="Star" />
+        </div>
+
+        <h1 class="card_title">How did we do?</h1>
+
+        <p class="card_desc">
+          Please let us know how we did with your support request. All feedback
+          is appreciated to help us improve our offering!
+        </p>
+
+        <div class="rating_numbers_wrapper">
+          <div class="rating_number" id="1">1</div>
+          <div class="rating_number" id="2">2</div>
+          <div class="rating_number" id="3">3</div>
+          <div class="rating_number" id="4">4</div>
+          <div class="rating_number" id="5">5</div>
+        </div>
+        <button class="submit_button">Submit</button>
+      </div>
+
+      <div class="thankyou_card hide_element">
+        <img
+          class="thank_you_img"
+          src="./images/illustration-thank-you.svg"
+          alt="Thank you illustration"
+        />
+
+        <p class="rating_selected">
+          You selected <span id="rating_number_selected"></span> out of 5
+        </p>
+
+        <p class="thank_you_title">Thank you!</p>
+
+        <p class="thank_you_desc">
+          We appreciate you taking the time to give a rating. If you ever need
+          more support, don't hesitate to get in touch!
+        </p>
+      </div>
+    </div>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by
+      <a href="https://www.petritnuredini.com" target="_blank"
+        >Petrit Nuredini</a
+      >.
+    </div>
+    <script>
+      const ratingCard = document.querySelector(".rating_card");
+      const thankYouCard = document.querySelector(".thankyou_card");
+      const ratingNumbers = document.querySelectorAll(".rating_number");
+      const submitButton = document.querySelector(".submit_button");
+      const ratingNumberSelected = document.getElementById(
+        "rating_number_selected"
+      );
+      let rating;
+
+      const handleRatingNumberClick = (value) => {
+        ratingNumbers.forEach((number) => {
+          number.classList.remove("active");
+        });
+        rating = value.innerText;
+
+        const selectedRating = document.getElementById(value.id);
+        selectedRating.classList.add("active");
+      };
+
+      const handleSubmit = () => {
+        if (rating) {
+          ratingCard.classList.add("hide_element");
+          thankYouCard.classList.remove("hide_element");
+          ratingNumberSelected.innerText = rating;
+        }
+      };
+
+      ratingNumbers.forEach((number) => {
+        number.addEventListener("click", () => {
+          handleRatingNumberClick(number);
+        });
+      });
+
+      submitButton.addEventListener("click", handleSubmit);
+    </script>
+  </body>
+</html>
