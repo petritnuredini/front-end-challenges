@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Ping coming soon page</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Libre Franklin", sans-serif;
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+      }
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+      .ping_coming_page_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: calc(100vh - 13.33px);
+        padding: 100px;
+      }
+      .ping_page_wrapper {
+        max-width: 1440px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .ping_header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .ping_logo {
+        margin-bottom: 50px;
+      }
+      .header_title {
+        font-weight: normal;
+        font-size: 45px;
+        color: hsl(0, 0%, 59%);
+      }
+      .bold_text {
+        color: #000;
+        font-weight: 700;
+      }
+      .header_subtitle {
+        font-size: 20px;
+        margin: 20px 0px 40px 0px;
+      }
+      .email_input_container {
+        display: flex;
+        width: 100%;
+        max-width: 600px;
+        margin-bottom: 50px;
+        gap: 20px;
+      }
+
+      .email_input {
+        all: unset;
+        height: 50px;
+        width: 80%;
+        border: 1.5px solid hsl(0, 0%, 59%);
+        border-radius: 25px;
+        padding-left: 25px;
+      }
+
+      .notify_btn {
+        all: unset;
+        background-color: hsl(223, 87%, 63%);
+        color: #fff;
+        width: 100%;
+        max-width: 150px;
+        padding: 10px;
+        border-radius: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+      }
+
+      .image_container {
+        padding: 20px;
+      }
+      .dashboard_image {
+        max-width: 600px;
+        width: 100%;
+        height: 100%;
+      }
+
+      .footer_container {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .social_media_wrapper {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .social_media_wrapper .social_media_item {
+        width: 35px;
+        height: 35px;
+        border: 1px solid hsl(223, 100%, 88%);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .social_media_icon {
+        width: 100%;
+        height: 100%;
+        max-width: 20px;
+        max-height: 20px;
+      }
+      .copy_right {
+        color: hsl(0, 0%, 59%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ping_coming_page_container">
+      <div class="ping_page_wrapper">
+        <div class="ping_header">
+          <img class="ping_logo" src="./images/logo.svg" alt="Ping Logo" />
+
+          <h1 class="header_title">
+            We are launching <span class="bold_text">soon!</span>
+          </h1>
+          <p class="header_subtitle">Subscribe and get notified</p>
+        </div>
+        <div class="email_input_container">
+          <input
+            class="email_input"
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Your email address.."
+          />
+          <button class="notify_btn">Notify Me</button>
+        </div>
+        <div class="image_container">
+          <img
+            class="dashboard_image"
+            src="./images/illustration-dashboard.png"
+            alt="Dashboard image"
+          />
+        </div>
+
+        <div class="footer_container">
+          <div class="social_media_wrapper">
+            <a href="#" class="social_media_item">
+              <img
+                class="social_media_icon facebook"
+                src="./images/facebook.png"
+                alt="Facebook Logo"
+              />
+            </a>
+            <a href="#" class="social_media_item">
+              <img
+                class="social_media_icon twitter"
+                src="./images/twitter.png"
+                alt="Twitter Logo"
+              />
+            </a>
+            <a href="#" class="social_media_item">
+              <img
+                class="social_media_icon instagram"
+                src="./images/instagram.png"
+                alt="Instagram Logo"
+              />
+            </a>
+          </div>
+          <p class="copy_right">(C) Copyright Ping. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- We are launching soon! Subscribe and get notified Notify Me &copy; Copyright
+    Ping. All rights reserved. -->
+
+    <footer role="contentinfo">
+      <p class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="#">Your Name Here</a>.
+      </p>
+    </footer>
+  </body>
+</html>
