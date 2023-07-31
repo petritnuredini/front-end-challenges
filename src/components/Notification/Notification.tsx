@@ -1,6 +1,5 @@
 import React from "react";
 import "./notification.css";
-import MarkWebber from "../../assets/images/avatar-mark-webber.webp";
 
 interface NotificationProps {
   userImage: string;
