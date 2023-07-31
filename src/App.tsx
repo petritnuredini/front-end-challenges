@@ -93,7 +93,7 @@ function App() {
 
   useEffect(() => {
     calculateNews();
-  }, []);
+  });
 
   const handleMarkasRead = () => {
     setUnreadNews(0);
