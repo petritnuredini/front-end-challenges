@@ -1,0 +1,64 @@
+* {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: hsl(224, 21%, 14%);
+}
+
+.notification_app {
+  background-color: hsl(210, 60%, 98%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.notification_container {
+  max-width: 1440px;
+  width: 700px;
+}
+
+.notifications_card {
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+}
+
+.notification_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.ntf_header_left {
+  display: flex;
+  align-items: flex-end;
+  gap: 15px;
+}
+
+.ntf_header_title {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.notification_number {
+  background-color: hsl(219, 85%, 26%);
+  color: #fff;
+  padding: 5px 10px;
+  text-align: end;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.ntf_header_right .mark_as_read {
+  cursor: pointer;
+}
+
+.ntf_header_right .mark_as_read:hover {
+  color: hsl(219, 85%, 26%);
+}
