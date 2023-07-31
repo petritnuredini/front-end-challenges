@@ -26,8 +26,8 @@ const Notification = (props: NotificationProps) => {
       <div className="notification_details">
         <div className="notification_message_details">
           <div className="ntf_details">
-            <p className="ntf_msg">
-              <span className="user_name">{props.userName}</span>{" "}
+            <div className="ntf_msg">
+              <span className="user_name">{props.userName}</span>
               {props.mainMsg}
               {props.msgBoldText && (
                 <span className="notification_bold_text">
@@ -35,7 +35,7 @@ const Notification = (props: NotificationProps) => {
                 </span>
               )}
               {props.new && <div className="red_circle"></div>}
-            </p>
+            </div>
           </div>
         </div>
         <div className="notification_time">{props.ntfDate}</div>

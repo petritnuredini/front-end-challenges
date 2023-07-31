@@ -8,6 +8,7 @@ import Kimberly from "./assets/images/avatar-kimberly-smith.webp";
 import Nathan from "./assets/images/avatar-nathan-peterson.webp";
 import AnnaKim from "./assets/images/avatar-anna-kim.webp";
 import ChessImage from "./assets/images/image-chess.webp";
+import { useEffect, useState } from "react";
 
 interface NotificationType {
   userImage: string;
@@ -21,7 +22,8 @@ interface NotificationType {
 }
 
 function App() {
-  const notifications: NotificationType[] = [
+  const [unReadNews, setUnreadNews] = useState<number>(0);
+  const [notifications, setNotifications] = useState<NotificationType[]>([
     {
       userImage: MarkWebber,
       userName: "Mark Webber",
@@ -77,7 +79,35 @@ function App() {
       ntfDate: "2 weeks ago",
       new: false,
     },
-  ];
+  ]);
+
+  const calculateNews = () => {
+    let count = 0;
+    for (let i = 0; i < notifications.length; i++) {
+      if (notifications[i].new === true) {
+        count += 1;
+      }
+    }
+    setUnreadNews(count);
+  };
+
+  useEffect(() => {
+    calculateNews();
+  }, []);
+
+  const handleMarkasRead = () => {
+    setUnreadNews(0);
+
+    const updatedNotifications = [...notifications];
+
+    for (let i = 0; i < updatedNotifications.length; i++) {
+      if (updatedNotifications[i].new === true) {
+        updatedNotifications[i].new = false;
+      }
+    }
+
+    setNotifications(updatedNotifications);
+  };
 
   return (
     <div className="notification_app">
@@ -86,16 +116,19 @@ function App() {
           <div className="notification_header">
             <div className="ntf_header_left">
               <p className="ntf_header_title">Notification</p>
-              <p className="notification_number">3</p>
+              <p className="notification_number">{unReadNews}</p>
             </div>
             <div className="ntf_header_right">
-              <p className="mark_as_read">Mark all as read</p>
+              <p className="mark_as_read" onClick={handleMarkasRead}>
+                Mark all as read
+              </p>
             </div>
           </div>
           <div className="notifcations_container">
             {notifications.length > 0 &&
-              notifications.map((notification) => (
+              notifications.map((notification, index) => (
                 <Notification
+                  key={index}
                   userImage={notification.userImage}
                   userName={notification.userName}
                   mainMsg={notification.mainMsg}
