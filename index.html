@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Product preview card component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Fraunces", serif;
+        font-family: "Montserrat", sans-serif;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+      .product_preview_page_container {
+        background-color: hsl(30, 38%, 92%);
+        min-height: calc(100vh - 13.33px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+      .card_component_wrapper {
+        max-width: 1440px;
+      }
+
+      .card_component {
+        display: flex;
+        background-color: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+        max-width: 900px;
+        max-height: 580px;
+      }
+
+      .card_left_side {
+        width: 50%;
+      }
+      .product_image_desktop {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .product_image_mobile {
+        display: none;
+      }
+
+      .card_right_side {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        padding: 35px;
+        justify-content: space-between;
+      }
+
+      .card_right_side .subtitle {
+        letter-spacing: 7px;
+        color: hsl(228, 12%, 48%);
+      }
+
+      .card_right_side .product_title {
+        font-family: "Fraunces", serif;
+        font-size: 45px;
+        margin-top: 20px;
+        color: hsl(212, 21%, 14%);
+        margin-bottom: 30px;
+      }
+      .card_right_side .product_description {
+        font-size: 18px;
+        margin-bottom: 30px;
+        color: hsl(228, 12%, 48%);
+      }
+      .card_right_side .price_container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+      .price_container .current_price {
+        font-size: 45px;
+        font-family: "Fraunces", serif;
+        color: hsl(158, 36%, 37%);
+      }
+      .price_container .previous_price {
+        margin-left: 20px;
+        text-decoration: line-through;
+        font-size: 16px;
+        color: hsl(228, 12%, 48%);
+      }
+      .add_to_card_btn {
+        all: unset;
+        box-sizing: border-box;
+        background-color: hsl(158, 36%, 37%);
+        width: 100%;
+        height: 50px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .add_to_card_btn .cart_icon {
+        margin-right: 10px;
+      }
+      .add_to_card_btn:hover {
+        background-color: hsl(158, 36%, 20%);
+      }
+
+      @media (max-width: 768px) {
+        .card_component {
+          flex-direction: column;
+          max-height: unset;
+        }
+        .card_left_side {
+          width: 100%;
+        }
+        .product_image_desktop {
+          display: none;
+        }
+        .product_image_mobile {
+          display: flex;
+          width: 100%;
+          height: 100%;
+        }
+
+        .card_right_side {
+          width: 100%;
+          padding: 30px;
+        }
+        .subtitle {
+          font-size: 13px;
+        }
+        .card_right_side .product_title {
+          font-size: 30px;
+          margin-top: 10px;
+          margin-bottom: 15px;
+        }
+        .price_container .current_price {
+          font-size: 30px;
+        }
+        .price_container .previous_price {
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="product_preview_page_container" role="main">
+      <div class="card_component_wrapper">
+        <div class="card_component">
+          <div class="card_left_side">
+            <img
+              class="product_image_desktop"
+              src="./images/image-product-desktop.jpg"
+              alt="Product Image"
+            />
+            <img
+              class="product_image_mobile"
+              src="./images/image-product-mobile.jpg"
+              alt="Product Image"
+            />
+          </div>
+
+          <div class="card_right_side">
+            <div class="header_rigt_side">
+              <p class="subtitle">PERFUME</p>
+              <h1 class="product_title">Gabrielle Essence Eau De Parfum</h1>
+            </div>
+            <div class="card_body">
+              <p class="product_description">
+                A floarl, solar and voluptuous interpretation composed by
+                Olivier Polge, Perfumer-Creator for the House of CHANEL.
+              </p>
+
+              <div class="price_container">
+                <h1 class="current_price">$149.99</h1>
+                <p class="previous_price">$169.99</p>
+              </div>
+              <button class="add_to_card_btn">
+                <img
+                  class="cart_icon"
+                  src="./images/icon-cart.svg"
+                  alt="Shopping Cart"
+                />
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="attribution" role="contentinfo">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="https:///www.petritnuredini.com">Petrit Nuredini</a>.
+    </div>
+  </body>
+</html>
