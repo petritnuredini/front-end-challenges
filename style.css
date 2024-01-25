@@ -13,7 +13,7 @@
 
 .credit_card_app_left_side {
   width: 35%;
-  background: url(./images/bg-main-desktop.png);
+  background: url(images/bg-main-desktop.png);
   background-size: cover;
   position: relative;
   display: flex;
