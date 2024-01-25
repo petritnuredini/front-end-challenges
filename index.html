@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Interactive card details form</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="credit_card_form_app_container">
+      <div class="credit_card_app_left_side">
+        <div class="credit_cards_wrapper">
+          <div class="card_front_wrapper">
+            <img
+              src="/images/bg-card-front.png"
+              class="front_card"
+              alt="Front card"
+            />
+            <div class="card_details">
+              <img src="/images/card-logo.svg" alt="card logo" />
+              <p class="card_number" id="card_image_numbers">
+                0000 0000 0000 0000
+              </p>
+              <p class="card_holder" id="card_image_name">
+                Jane Appleseed <span id="card_image_expiration">00/00</span>
+              </p>
+            </div>
+          </div>
+          <div class="card_back_wrapper">
+            <img
+              src="/images/bg-card-back.png"
+              alt="Back of credit card"
+              class="back_card"
+            />
+            <p class="ccv_code" id="card_image_cvc">000</p>
+          </div>
+        </div>
+      </div>
+      <div class="credit_card_app_right_side">
+        <form class="credit_card_form" id="credit_card_form">
+          <label class="input_wrapper">
+            Cardholder Name
+            <input
+              type="text"
+              placeholder="e.g Jane Appleseed"
+              id="cardHolderName"
+            />
+            <p class="error_message hide_element" id="name_error">
+              Can't be blank
+            </p>
+          </label>
+          <label class="input_wrapper">
+            Card number
+            <input
+              type="text"
+              placeholder="e.g 1234 5678 9123 0000"
+              id="cardNumber"
+            />
+            <p class="error_message hide_element" id="card_blank_error">
+              Can't be blank
+            </p>
+            <p class="error_message hide_element" id="card_number_error">
+              Wrong format, numbers only
+            </p>
+          </label>
+          <div class="card_ex_and_cvc">
+            <label class="input_wrapper">
+              Exp. Date (MM/YY)
+              <div class="exp_date_inputs">
+                <input type="text" placeholder="MM" id="cardMonth" />
+                <input type="text" placeholder="YY" id="cardYear" />
+              </div>
+              <p class="error_message hide_element" id="exp_date_error">
+                Can't be blank
+              </p>
+            </label>
+
+            <label class="input_wrapper">
+              CVC
+              <input type="text" placeholder="e.g 123" id="cardCVC" />
+              <p class="error_message hide_element" id="cvc_error">
+                Can't be blank
+              </p>
+            </label>
+          </div>
+          <button type="submit" class="confirm_card_button">Confirm</button>
+        </form>
+
+        <div class="completed_state hide_element" id="completed_state">
+          <img
+            src="/images/icon-complete.svg"
+            class="icon_complete"
+            alt="Complete Icon"
+          />
+          <h2 class="thank_you_text">Thank You!</h2>
+          <p class="thank_you_note">We've added your card details</p>
+          <button class="confirm_card_button" id="continueButton">
+            Continue
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/script.js"></script>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Petrit Nuredini</a>.
+    </div>
+  </body>
+</html>
